@@ -1,9 +1,9 @@
 package client;
 
 public class Data {
-	public String exchange = "";
-	public String routingKey = "";
-	public String body = "";
+	private String exchange;
+	private String routingKey;
+	private String body;
 
 	public Data(String routingKey, String body) {
 		this.routingKey = routingKey;
@@ -14,6 +14,18 @@ public class Data {
 		this.exchange = exchange;
 		this.routingKey = routingKey;
 		this.body = body;
+	}
+	
+	public String exchange() {
+		return this.exchange;
+	}
+	
+	public String routingKey() {
+		return this.routingKey;
+	}
+	
+	public String body() {
+		return this.body;
 	}
 
 	public String toString() {
