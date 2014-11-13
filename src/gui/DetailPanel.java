@@ -1,4 +1,4 @@
-package instaKUram;
+package gui;
 
 import javax.swing.JPanel;
 

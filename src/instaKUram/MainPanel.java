@@ -1,40 +1,36 @@
 package instaKUram;
 
-import java.awt.*;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
-
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.io.IOException;
 
+import client.Client;
 import subscribe.Receiver;
+import gui.AddPhotoButton;
+import gui.PhotoPanel;
 
 public class MainPanel extends JPanel {
-	// 화면 사이즈 설정
-	public static final int WIDTH = 440;
-	public static final int HEIGHT = 680;
+	private final int WIDTH = 440;
+	private final int HEIGHT = 680;
+	private Client client;
 	
-	
-	Dimension dimension = new Dimension(WIDTH, HEIGHT);
-
-	public MainPanel() {
+	public MainPanel(Client client) {
 		this.setLayout(new BorderLayout());
-		this.setPreferredSize(dimension);
-		this.setFocusable(true);
-		this.requestFocus();
+		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+	
+		this.client = client;
 		this.add(photoPanel(), BorderLayout.CENTER);
 		this.add(addButton(), BorderLayout.SOUTH);
 	}
 	
-	public PhotoPanel photoPanel() {
+	private PhotoPanel photoPanel() {
 		PhotoPanel photoPanel = new PhotoPanel();
 		return photoPanel;
 	}
 	
-	public JButton addButton() {
-		JButton addButton = new JButton("Add Photo");	
-		addButton.setSize(WIDTH, 200);
-		addButton.setBackground(Color.RED);
+	private AddPhotoButton addButton() {
+		AddPhotoButton addButton = new AddPhotoButton(client);	
 		return addButton;
 	}
 	
@@ -42,5 +38,4 @@ public class MainPanel extends JPanel {
 		Receiver recv = new Receiver();
 		recv.run();
 	}
-
 }
