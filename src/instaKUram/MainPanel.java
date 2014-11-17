@@ -13,13 +13,11 @@ import gui.PhotoPanel;
 public class MainPanel extends JPanel {
 	private final int WIDTH = 440;
 	private final int HEIGHT = 680;
-	private Client client;
 	
 	public MainPanel(Client client) {
 		this.setLayout(new BorderLayout());
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 	
-		this.client = client;
 		this.add(photoPanel(), BorderLayout.CENTER);
 		this.add(addButton(), BorderLayout.SOUTH);
 	}
@@ -30,7 +28,7 @@ public class MainPanel extends JPanel {
 	}
 	
 	private AddPhotoButton addButton() {
-		AddPhotoButton addButton = new AddPhotoButton(client);	
+		AddPhotoButton addButton = new AddPhotoButton();	
 		return addButton;
 	}
 	

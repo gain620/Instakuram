@@ -14,22 +14,20 @@ import upload.Uploader;
 public class AddPhotoButton extends JButton implements MouseListener {
 	private int width = 440;
 	private int height = 40;
-	private Client client;
 	
-	public AddPhotoButton(Client client) {
+	public AddPhotoButton() {
 		this.setPreferredSize(new Dimension(width, height));
 		this.setText("Add Button");
 		this.setBackground(Color.RED);
 		this.setVisible(true);
 		this.addMouseListener(this);
-		this.client = client;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		try {
 			Uploader uploader;
-			uploader = new Uploader(client);
+			uploader = new Uploader();
 			uploader.upload();
 		} catch (IOException e) {
 			e.printStackTrace();

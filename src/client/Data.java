@@ -1,21 +1,21 @@
 package client;
 
-import java.io.FileInputStream;
+import java.awt.Image;
 
 public class Data {
 	private String exchange;
 	private String routingKey;
-	private FileInputStream dataStream;
+	private Image img;
 
-	public Data(String routingKey, FileInputStream dataStream) {
+	public Data(String routingKey, Image img) {
 		this.routingKey = routingKey;
-		this.dataStream  = dataStream;
+		this.img = img;
 	}
 
-	public Data(String exchange, String routingKey, FileInputStream dataStream) {
+	public Data(String exchange, String routingKey, Image img) {
 		this.exchange = exchange;
 		this.routingKey = routingKey;
-		this.dataStream = dataStream;
+		this.img = img;
 	}
 	
 	public String exchange() {
@@ -27,15 +27,14 @@ public class Data {
 	}
 	
 	public String body() {
-		return this.dataStream.toString();
+		return this.img.toString();
 	}
 
 	public String toString() {
 		if (exchange.length() > 0) {
-			return String.format("Exchange='%s', Key='%s', '%s'", exchange,
-					routingKey, dataStream);
+			return String.format("Exchange='%s', Key='%s', '%s'", exchange, routingKey, img);
 		} else {
-			return String.format("Key='%s', '%s'", routingKey, dataStream);
+			return String.format("Key='%s', '%s'", routingKey, img);
 		}
 	}
 }
